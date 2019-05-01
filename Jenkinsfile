@@ -8,7 +8,7 @@ pipeline {
     }
   }
   environment {
-    aws_access_key_id = 'AKIA3BUGTAFJFPCYD6UB'
-    aws_secret_access_key = '3iNRBFBcG721jT74wG99H3HFLYaKUaV8chBobbe'
+    aws_access_key_id = ''
+    aws_secret_access_key = ''
   }
 }
