@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('validate') {
       steps {
-        sh 'packer validate jenkins-packer.json'
+        sh '/usr/local/bin/packer validate jenkins-packer.json'
       }
     }
   }
