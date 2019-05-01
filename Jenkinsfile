@@ -6,9 +6,14 @@ pipeline {
         sh '/usr/local/bin/packer validate jenkins-packer.json'
       }
     }
-  }
-  environment {
-    aws_access_key_id = ''
-    aws_secret_access_key = ''
+    stage('build'){
+        steps{
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_CREDENTIALS']]) {
+               sh '/usr/local/bin/packer build jenkins-packer.json'
+       }
+     }
+    }
   }
 }
+
+
