@@ -18,10 +18,16 @@ sudo unzip /usr/local/bin/terraform.zip -d /usr/local/bin
 #Install Ansible
 sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum install ansible -y
-sudo yum install docker -y
+#Install docker-ce
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum makecache fast
+sudo yum install -y http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.95-2.el7_6.noarch.rpm
+sudo yum install docker-ce -y
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
 sudo groupadd docker
-sudo usermod -aG jenkins 
+sudo usermod -aG docker jenkins 
+sudo usermod -aG docker ec2-user
+# Start Jenkins service etc
 sudo service jenkins start
 sudo chkconfig jenkins on
