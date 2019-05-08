@@ -1,19 +1,7 @@
-pipeline {
-  agent any
-  stages {
-    stage('validate') {
-      steps {
-        sh '/usr/local/bin/packer validate jenkins-packer.json'
-      }
-    }
-    stage('build'){
-        steps{
-            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_CREDENTIALS']]) {
-               sh '/usr/local/bin/packer build jenkins-packer.json'
-       }
-     }
-    }
-  }
-}
+@Library('ami-jenkins-library') _
 
+amiPipeline{
+ packer = "/usr/local/bin/packer"
+ packerFile = "jenkins-packer.json"
+}
 
