@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('validate') {
       steps {
+        println GroovySystem.version
         sh '/usr/local/bin/packer validate jenkins-packer.json'
       }
     }
