@@ -1,4 +1,4 @@
-@Library('ami-jenkins-library') _
+@Library('ami-jenkins-library@master') _
 
 amiPipeline{
  packer = "/usr/local/bin/packer"
